@@ -13,9 +13,7 @@ const ExpenseItem = (props) => {
         setTitle('Updated');
         console.log(title)
     }
-    const changeAmount=()=>{
-        setAmount(100);
-    }
+  
     
  
     return (<Card className="expense-item">
@@ -25,7 +23,6 @@ const ExpenseItem = (props) => {
             <div className="expense-item__price">${amount}</div>    
         </div>
         <button onClick={clickHandler}>Change Title</button>
-        <button onClick={changeAmount}>Change Expense</button>
 
     </Card>
     )
