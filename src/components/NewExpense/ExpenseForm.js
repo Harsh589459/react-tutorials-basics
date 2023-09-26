@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './NewExpense.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount,setEnteredAmount]=useState('');
@@ -65,7 +65,10 @@ const ExpenseForm = () => {
 
         }
 
-        console.log(expenseData);
+        props.onSaveExpenseData(expenseData)
+        setEnteredAmount('');
+        setEnteredTitle('');
+        setEnteredDate('');
 
 
     }
@@ -75,19 +78,19 @@ const ExpenseForm = () => {
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Title</label>
-                <input type='text' onChange={tilteChangeHandler}/>
+                <input type='text' value={enteredTitle} onChange={tilteChangeHandler}/>
             </div>
         </div>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Amount</label>
-                <input type='number' min="0.01" step="0.01"onChange={AmountChangeHandler}/>
+                <input type='number' value={enteredAmount} min="0.01" step="0.01"onChange={AmountChangeHandler}/>
             </div>
         </div>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Date</label>
-                <input type='date' min="2019-01-01" max="2028-12-31" onChange={DateChangeHandler}/>
+                <input type='date' value={enteredDate} min="2019-01-01" max="2028-12-31" onChange={DateChangeHandler}/>
             </div>
         </div>
         <div className='new-expense__actions'>
